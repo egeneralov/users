@@ -1,0 +1,7 @@
+---
+# tasks file for users
+
+- include_tasks: user.yml
+  with_dict: "{{ users }}"
+  loop_control:
+    loop_var: user

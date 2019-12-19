@@ -1,0 +1,9 @@
+---
+# defaults file for users
+
+users:
+  egeneralov:
+    nopasswd: True
+    shell: /bin/bash
+    id_rsa_pub:
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDQz0msyVhvr/lxW8nD/J4A4bwACa9djQkgqHE8l8VglISZD/tQDE4kr9lJR9UswdRYqWiWzm5j5TutMqdMLx4ng9LFTnaoOQPgBrj2eowqIua4tZ3eP5cX3kHhL5WilV0cHE5iVNVHo64Jx1OnuO2qMzuEhhIBPIv6cZiB0S8qw7rAVCITGzWRpohSmxNiwJVm5srY4DTPXCWTNTynz5is6ZBiwl0wQpOLpMmRGCAR2rjbc+0UvK6QoT+y54AqQLaxLATrN6k33CjrtAahU06w+h1qTzVksn+OkdUweZriK//T0KKKk/0/e/jqdrPbNErPqGmDCHzYyJiRbVQFBcDv egeneralov@company

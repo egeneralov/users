@@ -1,0 +1,18 @@
+galaxy_info:
+  author: Eduard Generalov
+  description: manage users
+  license: MIT
+  min_ansible_version: 2.4
+  github_branch: master
+
+  platforms:
+  - name: Debian
+    versions:
+    - buster
+    - stretch
+    - jessie
+
+  galaxy_tags:
+    - users
+
+dependencies: []

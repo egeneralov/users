@@ -1,0 +1,30 @@
+---
+
+- block:
+  - name: invoked with user
+    debug:
+      msg: "{{ user.key }}"
+  
+  - name: Manage users
+    user:
+      name: "{{ user.key }}"
+      shell: "{{ user.value.shell|default('/bin/false') }}"
+      state: '{{ user.value.state|default("present") }}'
+      remove: "{% if user.value.state|default('present') == 'absent' %}true{% else %}false{% endif%}"
+  
+  - name: "authorized_key (no_log: true)"
+    authorized_key:
+      user: "{{ user.key }}"
+      key: "{{ item }}"
+      exclusive: "{% if user.value.id_rsa_pub|length == 0 %}True{% else %}False{% endif %}"
+    with_items: "{{ user.value.id_rsa_pub|default([]) }}"
+    when: user.value.state|default("present") == "present"
+    no_log: true
+  
+  - name: "NOPASSWD: ALL"
+    lineinfile:
+      path: /etc/sudoers
+      line: "{{ user.key }} ALL=(ALL) NOPASSWD: ALL"
+      regexp: "{{ user.key }}.*"
+      state: "{% if user.value.nopasswd|default(False) %}present{% else %}absent{% endif %}"
+  when: user.value.servers|default([])|length == 0 or inventory_hostname in user.value.servers|default([])
